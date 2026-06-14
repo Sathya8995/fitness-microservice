@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: userservice
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fitness_user_db
+    username: postgres
+    password: Dbpas123*
+  jpa:
+    hibernate:
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
