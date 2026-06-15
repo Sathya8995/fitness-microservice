@@ -4,7 +4,7 @@ spring:
   profiles:
     active: local
   application:
-    name: userservice
+    name: user-service
   datasource:
     url: jdbc:postgresql://localhost:5432/fitness_user_db
     username: postgres
@@ -12,3 +12,11 @@ spring:
   jpa:
     hibernate:
       database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
