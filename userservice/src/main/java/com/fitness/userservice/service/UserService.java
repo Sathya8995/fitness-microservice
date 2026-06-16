@@ -6,6 +6,7 @@ import com.fitness.userservice.model.User;
 import com.fitness.userservice.repository.UserRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.Nullable;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class UserService {
 
     private final UserRepository repo;
@@ -58,7 +60,8 @@ public class UserService {
         return userResponse;
     }
 
-    public Boolean existByUserId(String userID) {
-        return repo.existsById(userID);
+    public Boolean existByUserId(String userId) {
+        log.info("Calling User Validation API for user ID: {}", userId);
+        return repo.existsById(userId);
     }
 }

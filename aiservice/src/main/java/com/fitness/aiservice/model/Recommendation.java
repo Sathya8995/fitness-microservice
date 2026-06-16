@@ -1,40 +1,39 @@
-package com.fitness.activityservice.model;
+package com.fitness.aiservice.model;
 
-import lombok.*;
-import org.springframework.data.annotation.CreatedBy;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.List;
 
-@Document(collection = "activity")
+@Document(collection = "recommendations")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Activity {
+public class Recommendation {
 
     @Id
     private String id;
+    private String activityId;
     private String userId;
-    private ActivityType type;
-    private Integer duration;
-    private Integer caloriesBurned;
-    private LocalDateTime startTime;
-
-    @Field("metrics")
-    private Map<String, Object> additionalMetrics;
+    private String activityType;
+    private String recommendation;
+    private List<String> improvements;
+    private List<String> suggestions;
+    private List<String> safety;
 
     @CreatedDate
     private LocalDateTime createdAt;
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
-
 
 
 }
